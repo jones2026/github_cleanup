@@ -50,7 +50,7 @@ function fetchRepos(options, user) {
     if (err) { return onErr(err); }
     let user_repos = JSON.parse(body);
     for (let repo of user_repos) {
-      if (repo.owner.login === user) {
+      if (repo.owner.login === user && repo.fork) {
         console.log('Attempting to delete repo: ', [repo.full_name]);
         deleteURL = new URL('repos/' + [repo.owner.login] + '/' + [repo.name], apiURL);
         options.url = deleteURL
