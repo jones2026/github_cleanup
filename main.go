@@ -38,7 +38,8 @@ func main() {
 				client.Repositories.Delete(context.Background(), *repo.Owner.Login, *repo.Name)
 				fmt.Println("Deleted:", *repo.Owner.Login, "/", *repo.Name, "?")
 			}
-
+		} else {
+			fmt.Printf("Skipping non-forked repo: %s/%s\n", *repo.Owner.Login, *repo.Name)
 		}
 	}
 
